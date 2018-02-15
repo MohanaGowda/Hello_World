@@ -54,3 +54,55 @@ public class Hello {
 	   }
 
 }
+
+package java8;
+
+public class LambdaExcpressionBasicOperation {
+	
+	public static void main(String[] args){
+		
+		LambdaExcpressionBasicOperation lambdaExp= new LambdaExcpressionBasicOperation();
+		
+		MathOperation addition = (int a, int b) -> a + b;
+		
+		MathOperation subtraction =(a, b)->a-b;
+		
+		MathOperation multiplication=(int a, int b) -> { return a * b; };
+		
+		MathOperation division=(int a, int b)-> a/b;
+		
+		System.out.println(lambdaExp.operate(10, 5, addition) );
+		
+		System.out.println(lambdaExp.operate(17, 8, subtraction));
+		
+		
+		System.out.println(lambdaExp.operate(10, 2, multiplication));
+		
+		System.out.println(lambdaExp.operate(25, 5, division));
+		
+		GreetingService gretingSerive=message->
+		System.out.println("Welcome " + message);
+		gretingSerive.showMessages("Mohana");
+		
+		GreetingService gretingService2=message->
+		System.out.println("Welcome " + message);
+		gretingService2.showMessages("Siva");	
+		
+	}
+	
+	interface MathOperation{
+		
+		int operation(int a, int b);
+		
+	}
+	
+	interface GreetingService{
+		void  showMessages(String Message);
+	}
+	
+	public int operate(int a, int b, MathOperation mathOperation){
+		return mathOperation.operation(a, b);
+	}
+
+}
+
